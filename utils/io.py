@@ -7,7 +7,7 @@ def read(path: str) -> str:
     return data
 
 
-def read_lines(path: str) -> List[str]:
+def readlines(path: str) -> List[str]:
     with open(path) as f:
         data = f.readlines()
     return data

@@ -1,4 +1,4 @@
-from typing import List
+from typing import Iterator
 
 
 def read(path: str) -> str:
@@ -7,7 +7,7 @@ def read(path: str) -> str:
     return data
 
 
-def readlines(path: str) -> List[str]:
+def readlines(path: str) -> Iterator[str]:
     with open(path) as f:
         data = f.readlines()
-    return data
+    return (x.rstrip() for x in data)

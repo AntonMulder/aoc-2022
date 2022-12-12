@@ -1,5 +1,5 @@
 from utils.io import readlines
-from utils.point import Point
+from utils.point import DOWN, LEFT, RIGHT, UP, Point
 
 
 def sign(x):
@@ -7,7 +7,7 @@ def sign(x):
 
 
 def run(puzzle_input):
-    directions = {"R": Point(0, 1), "L": Point(0, -1), "U": Point(1, 0), "D": Point(-1, 0)}
+    directions = {"R": RIGHT, "L": LEFT, "U": UP, "D": DOWN}
     rope = [Point(0, 0)] * 2
     visited = set(rope)
 
@@ -20,7 +20,7 @@ def run(puzzle_input):
             for i in range(1, 2):
                 delta = rope[i - 1] - rope[i]
                 if abs(delta.x) > 1 or abs(delta.y) > 1:
-                    rope[i] += Point(sign(delta.x), sign(delta.y))
+                    rope[i] += Point(sign(delta.y), sign(delta.x))
             visited.add(rope[-1])
 
     return len(visited)
